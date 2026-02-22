@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+  <meta charset="UTF-8" />
+  <title>사건 설명</title>
+  <link rel="stylesheet" href="../info/style.css"/>
+</head>
+<body>
+  <main class="screen info">
+
+
+    <!-- 설명 텍스트 -->
+     <div class="story-text"> 
+      <p class="text1">
+      최고의 사이드 메뉴인 감자튀김을 대상으로
+      연쇄적인 살인사건이 발생했습니다.<br/>
+      FBI는 수사기록을 통해 이 사건들에는
+      무언가 연속적인 연관성이 있음을 알아냈습니다.<br/>
+      사건현장과 기록들을 통해
+      누가 이 사건의 진짜 범인인지 밝혀주세요.
+      </p>
+    </div>
+
+    <!--캐릭터이미지 -->
+  <img class="family" src="../assets/potatofamily/family photo.png" alt="패스트푸드">
+
+    <!-- 🔎 광고 썸네일 (작게 잘린 상태) -->
+  <div class="ad-frame">
+      <img src="../assets/tee_ad.png"
+           alt="FBI 티셔츠 광고"
+           class="ad-thumb"
+           id="adThumb">
+  </div>
+
+  <!-- 🔥 확대 모달 -->
+  <div class="ad-modal" id="adModal">
+      <span class="ad-close" id="adClose">&times;</span>
+      <img src="../assets/tee_ad.png" class="ad-full">
+  </div>
+
+  <!-- 다음 버튼 -->
+  <button id="nextBtn" class="next-btn"></button>
+
+</main>
+
+  <script src="../info/sketch.js"></script>
+</body>
+</html>
+</html>

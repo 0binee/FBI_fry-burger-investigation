@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>milkshake</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+    <div class="container">
+        <header class="case-header">
+            <h1>Case No. FF-M-002</h1>
+            <p class="description">
+                2026년 1월 9일 13시 9분경, 감자튀김 B가 밀크쉐이크 컵의 <br>
+                내부에서 침몰한 채 발견되었으며, 구석에서 이를 지켜보던 해쉬브라운의<br>
+                모습 또한 함께 포착되었다.
+
+            </p>
+        </header>
+
+     <a href="../play/index.html" class="home-btn">
+            <span class="home-text">🏠</span>
+    </a>
+    <a href="#" class="culprit-btn" id="openCulprit">
+     범인 선택하기
+    </a>
+    
+    <main class="crime-scene">
+            <div class="victim-wrapper">
+                <img src="../assets/milkshake.png" alt="Dead Potato" class="victim-img">
+            </div>
+    </main>
+
+        <div class="evidence-frame">
+             <div class="evidence-label">증거물을 통해 범인을 유추해주세요.</div>
+             <div class="evidence-track">
+                
+                <img src="../assets/evidence/police report/PR_ff-m-002.jpg" class="evidence-img doc-1" alt="Police Report"
+                     data-title="FF-M-002 사건 보고서"
+                     data-desc="사건을 요약한 보고서이다. 감자튀김 B가 밀크쉐이크 컵 내부에서 침몰된 채 발견되었다">
+                
+                <img src="../assets/evidence/transcript/hash/ts_hash_01.jpg" class="evidence-img doc-2" alt="Transcript 01"
+                     data-title="해쉬브라운 녹취록01"
+                     data-desc="수사관과 해쉬브라운의 대화를 기록한 녹취록이다. 처음에는 강력히 사고사임을 주장하였으나, 거짓 자백으로 진술을 번복했다. 클래식 버거의 이름을 들으면 과민 반응을 보인다.">
+                
+                <img src="../assets/evidence/transcript/hash/ts_hash_02.jpg" class="evidence-img doc-3" alt="Transcript 02"
+                     data-title="해쉬브라운 녹취록02"
+                     data-desc="수사관과 해쉬브라운의 대화를 기록한 녹취록이다. 처음에는 강력히 사고사임을 주장하였으나, 거짓 자백으로 진술을 번복했다. 클래식 버거의 이름을 들으면 과민 반응을 보인다.">
+
+                <img src="../assets/evidence/psychometry report/psy rt_Hash.jpg" class="evidence-img doc-4" alt="Transcript 03"
+                     data-title="해쉬브라운의 심리 검사지"
+                     data-desc="해쉬브라운의 심리 검사 결과를 기록한 문서다. 분석 결과 해쉬브라운은 자아가 소멸된 상태이며 타인에게 전적으로 종속하는 성향임이 밝혀졌다.">
+
+                <img src="../assets/evidence/crime scene/case2_milkshake_004.png" class="evidence-img doc-5" alt="Transcript 04"
+                     data-title="현장사진"
+                     data-desc="감자튀김 B가 밀크쉐이크에 침몰된 현장 사진이다. 언뜻 보면 감자튀김 B가 익사한 것 같아 보인다.">
+
+                <img src="../assets/evidence/crime scene/case2_hash_cctv_005.png" class="evidence-img doc-6" alt="Transcript 05"
+                     data-title="cctv자료 화면"
+                     data-desc="해쉬브라운과 클래식 버거의 밀회 현장이 담긴 CCTV 자료이다.">
+
+                <img src="../assets/evidence/autopsy report/milkshake/ar2_FF-M-002_script.jpg" class="evidence-img doc-7" alt="Transcript 06"
+                     data-title="감자튀김 B 상세 부검기록"
+                     data-desc="감자튀김 B의 구체적인 사인과 감자튀김의 손상 소견을분석한 문서이다.">
+
+                <img src="../assets/evidence/autopsy report/milkshake/ar_FF-M-002_fry.jpg" class="evidence-img doc-8" alt="Transcript 07"
+                     data-title="감자튀김 B 부검기록"
+                     data-desc="감자튀김 B의 부위별 손상 소견이 적혀 있다.">
+                </div>
+            </div>
+        </div>
+            
+    <div id="culpritModal" class="culprit-modal">
+      <div class="culprit-box">
+        <span class="close-culprit">&times;</span>
+        <p class="culprit-title">1번 사건의 범인을 클릭하여 수사에 도움을 주세요.</p>
+
+        <div class="culprit-list">
+            <img src="../assets/potatofamily/cheese_in.png"
+                 data-name="치즈버거"
+                 data-culprit="false"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/classic_in.png"
+                 data-name="클래식 버거"
+                 data-culprit="true"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/hash_in.png"
+                 data-name="해쉬브라운"
+                 data-culprit="true"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/ice_in.png"
+                 data-name="아이스크림"
+                 data-culprit="false"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/onion_in.png"
+                 data-name="어니언링"
+                 data-culprit="false"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/potato_in.png"
+                 data-name="감자튀김"
+                 data-culprit="false"
+                 class="suspect">
+        </div>
+  </div>
+  <div id="resultModal" class="result-modal">
+      <div class="result-box">
+        <span class="close-result">&times;</span>
+        <p id="resultText"></p>
+    </div>
+</div>
+
+<button id="btn"></button>
+
+<script src="sketch.js"></script>
+</html>

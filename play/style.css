@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gulim';
+  /* outline: 1px solid rgba(0,0,255); */
+}
+
+@font-face {
+  font-family: 'Gulim';
+  src: url('../gulim.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background: #1B1A1A;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#game {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-title {
+  position: relative;
+  top: 100px;
+  width: 100%;
+  text-align: center;
+  /* background-color: pink; */
+  font-size: 25px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  color: #FFFEF7;
+}
+
+.illust-frame {
+  position: relative;
+  top: 50px;
+  margin: 50px;
+  width: 1000px;
+  overflow: hidden;
+  /*border: 3px solid #ffffff;*/
+}
+
+.illusts {
+  position: relative;
+  inset: 0;
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide1,
+.slide2,
+.slide3 {
+  width: 1000px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.illusts img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.caption1,
+.caption2,
+.caption3 {
+  color: white;
+  margin-top: 20px;
+  font-size: 25px;
+  word-break: keep-all;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  cursor: pointer;
+}
+
+.arrow.right {
+  left: 50px;
+  border-top: 43px solid transparent;
+  border-bottom: 43px solid transparent;
+  border-right: 50px solid #FFFEF7;
+}
+
+.arrow.left {
+  right: 50px;
+  border-top: 43px solid transparent;
+  border-bottom: 43px solid transparent;
+  border-left: 50px solid #FFFEF7;
+}
+
+button {
+  display: block;
+  margin: 80px auto 60px auto;   /* 위 간격 / 아래 간격 */
+  padding: 12px 30px;
+  border-radius: 999px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #FFFEF7;
+  color: #1B1A1A;
+}

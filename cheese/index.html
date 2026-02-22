@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cheese</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+    <div class="container">
+
+        <header class="case-header">
+            <h1>Case No. FF-M-001</h1>
+            <p class="description">
+                2025년 12월 25일 23시 50분경, 매장 소등 직전 트레이 구역에서 <br> 
+                비명소리가 들렸다는 신고를 받고 출동했다. 현장 도착 당시 감자튀김 A는 <br> 
+                노란색 치즈 띠에 목이 졸린 상태로 사망해 있었으며, 바로 옆에 치즈버거가 형체를 <br>  
+                알아볼 수 없을 정도로 으깨진 채 발견되었다.
+            </p>
+        </header>
+
+    <a href="../play/index.html" class="home-btn">
+            <span class="home-text">🏠</span>
+    </a>
+    <a href="#" class="culprit-btn" id="openCulprit">
+     범인 선택하기
+   </a>
+
+    <main class="crime-scene">
+         <div class="victim-wrapper">
+              <img src="../assets/cheese.png" alt="Dead Potato" class="victim-img">
+         </div>
+    </main>
+
+    <div class="evidence-frame">
+         <div class="evidence-label">증거물을 보고 범인을 유추해주세요.</div>
+         <div class="evidence-track">
+                
+                <img src="../assets/evidence/police report/PR_ff-m-001.jpg" class="evidence-img doc-1" alt="Police Report"
+                    data-title="FF-M-001 사건 보고서"
+                    data-desc="사건을 요약한 보고서이다. 이 사건은 초기 치즈버거의 단독 범행으로 종결될 뻔하였으나, 다른 증거들이 제 3자의 개입을 시사하고 있음이 밝혀졌다.">
+                
+                <img src="../assets/evidence/transcript/classic/ts_classic_01.jpg" class="evidence-img doc-2" alt="Transcript 01"
+                    data-title="클래식버거 녹취록(총 2페이지)"
+                    data-desc="수사관과 클래식버거의 대화를 기록한 녹취록이다. 클래식 버거는 자신의 혐의를 부인하고 있다.">
+
+                <img src="../assets/evidence/other report/fingerprint.jpg" class="evidence-img doc-3" alt="Transcript 03"
+                    data-title="클래식 버거의 지문 카드"
+                    data-desc="가장 유력한 용의자로 지목된 클래식 버거의 지문을 채취한 카드이다.">
+                
+                <img src="../assets/evidence/other report/Food Purchase Orde.jpg" class="evidence-img doc-4" alt="Transcript 04"
+                    data-title="식료품 발주서"
+                    data-desc="가장 최근에 발주한 식료품 정보를 알 수 있는 문서이다.클래식 버거를 위한 번, 비프 패티 주문량이 급증했다.">
+                
+                <img src="../assets/evidence/autopsy report/cheese/ar2_FF-M-001_script.jpg" class="evidence-img doc-5" alt="Transcript 05"
+                    data-title="감자튀김A 상세 부검기록"
+                    data-desc="감자튀김A의 구체적인 사인과 감자튀김의 손상 소견을 분석한 문서이다.">
+                
+                <img src="../assets/evidence/autopsy report/cheese/ar_FF-M-001_cheese.jpg" class="evidence-img doc-6" alt="Transcript 06"
+                    data-title="치즈버거 부검기록"
+                    data-desc="치즈버거의 부위별 손상 소견이 적혀 있다.">
+
+                <img src="../assets/evidence/autopsy report/cheese/ar_FF-M-001_fry.jpg" class="evidence-img doc-7" alt="Transcript 07"
+                    data-title="감자튀김 A 부검기록"
+                    data-desc="감자튀김A의 부위별 손상 소견이 적혀 있다.">
+                
+                <img src="../assets/evidence/crime scene/case1_cheese_001.png" class="evidence-img doc-8" alt="Transcript 08"
+                    data-title="현장사진_1"
+                    data-desc="감자튀김A가 치즈에 목이 졸려 사망했다. 치즈버거는 눌린 채로 사망했다.">
+
+                <img src="../assets/evidence/crime scene/case1_cheese_002.png" class="evidence-img doc-9" alt="Transcript 09"
+                    data-title="현장사진_2"
+                    data-desc="참깨가 가득 떨어져있다.">
+                
+                <img src="../assets/evidence/crime scene/case1_cheese_003.png" class="evidence-img doc-10" alt="Transcript 10"
+                    data-title="현장사진_3"
+                    data-desc="감자튀김A의 사망 상태를 자세히 볼 수 있다.">
+
+                <img src="../assets/evidence/crime scene/case1_saleschart.png" class="evidence-img doc-11" alt="Transcript 11"
+                    data-title="매출 분석 자료"
+                    data-desc="Buns & Blood 패스트푸드 점의 매출 변화를 분석한 그래프이다. 클래식 버거의 매출이 급증했음을 알 수 있다.">
+       
+           </div> </div> </div> <div id="documentModal" class="modal">
+            <div class="modal-content-box">
+            <span class="close-btn">&times;</span>
+            
+            <div class="modal-image-area">
+                <img id="modalImage" src="" alt="Evidence Image">
+            </div>
+            
+            <div class="modal-text-area">
+                <h2 id="modalTitle">증거물 제목</h2>
+                <p id="modalDescription">여기에 증거물에 대한 요약 설명이 들어갑니다.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="culpritModal" class="culprit-modal">
+     <div class="culprit-box">
+        <span class="close-culprit">&times;</span>
+        <p class="culprit-title">1번 사건의 범인을 클릭하여 수사에 도움을 주세요.</p>
+
+        <div class="culprit-list">
+            <img src="../assets/potatofamily/cheese_in.png"
+                 data-name="치즈버거"
+                 data-culprit="false"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/classic_in.png"
+                 data-name="클래식 버거"
+                 data-culprit="true"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/hash_in.png"
+                 data-name="해쉬브라운"
+                 data-culprit="false"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/ice_in.png"
+                 data-name="아이스크림"
+                 data-culprit="false"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/onion_in.png"
+                 data-name="어니언링"
+                 data-culprit="false"
+                 class="suspect">
+
+            <img src="../assets/potatofamily/potato_in.png"
+                 data-name="감자튀김"
+                 data-culprit="false"
+                 class="suspect">
+        </div>
+  </div>
+  <div id="resultModal" class="result-modal">
+      <div class="result-box">
+        <span class="close-result">&times;</span>
+        <p id="resultText"></p>
+    </div>
+</div>
+ <script src="sketch.js"></script>
+</body>
+</html>

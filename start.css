@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gulim';
+}
+
+body {
+  margin: 0;
+  background: #1B1A1A;
+  color: #FFFEF7;
+  font-family:'Gulim';
+}
+
+@font-face {
+  font-family: 'Gulim';
+  src: url('../gulim.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background: #1B1A1A;
+  color: #FFFEF7;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.title-area {
+  position: relative;   /* 🔥 버튼 기준 부모 */
+}
+
+/* 메인로고*/
+.character{
+  position: absolute;
+  left: 54.6vw;  /* 왼쪽기준 위치조절 */
+  top: 50.9vh;    /* 위아래 위치조절 */
+  transform: translate(-50%, -50%);
+  width: 62.5vw;
+  height: auto;
+}
+
+/*감자이미지*/
+.potato{
+  position: absolute;
+  left: 18.2vw;
+  top: 27.7vh;
+  width: 23.4vw;
+  height: auto;
+}
+
+/* 시작버튼 */
+button {
+  position: absolute;
+  top: 72vh;            /* 원하는 위치로 조절 */
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 2.2vh 2.5vw; /* 버튼 전체 크기 결정 */
+  border-radius: 999px; 
+  border: 1px solid white;
+  background: transparent;
+  color: #FFFEF7;
+  cursor: pointer;
+  font-size: 2.2vh; /* 글자 크기 */
+}
+
+button:hover {
+  background: #FFFEF7;
+  color: #1B1A1A;
+}

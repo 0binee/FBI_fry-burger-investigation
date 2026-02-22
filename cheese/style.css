@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gulim'; /* 모든 글꼴 굴림체 적용 */
+}
+  
+@font-face {
+    font-family:'Gulim';
+    src: url('../gulim.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+  
+body {
+    background: #1B1A1A; /* 검은 배경 */
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* 스크롤 방지 (화면에 딱 맞게) */
+}
+
+/* 1. 상단 텍스트 (사건 번호 및 설명) */
+.case-header {
+    font-family: 'gulim', sans-serif;
+    position: absolute;
+    top: 45px;
+    left: 45px;
+    z-index: 20000;
+    color: #FFFEF7;
+}
+
+.case-header h1 {
+    font-family: 'gulim', sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.case-header .description {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 900px;   /* ← 가로 길이 확장 */
+    width: 60vw;         /* 화면 기준으로 더 넓게 */
+    color: #FFFEF7; 
+    word-break: keep-all;
+}
+
+/* 2. 홈 버튼 + 사건선택버튼 이모지에 기본적으로 들어가는 컬러를 제거하고 흰색처럼 보이게 하려면 필터 필요할 수 있음. 
+   하지만 🏠 이모지는 OS마다 색이 다르므로 그대로 둠. */
+.home-btn , .culprit-btn {
+    position: fixed;
+    z-index: 20000; 
+    top: 40px; 
+    padding: 8px 20px;
+    border: 1px solid #FFFEF7;
+    border-radius: 999px;
+    background: transparent;
+    color: #FFFEF7;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.home-btn {
+    right: 1000px;
+}
+
+.culprit-btn {
+    right: 850px;
+}
+
+.culprit-btn:hover {
+    background: #FFFEF7;
+    color: #1B1A1A;
+}
+
+.home-btn:hover {
+    background: #FFFEF7;
+    color: #1B1A1A;
+}
+
+/* 3. 메인 이미지 영역 (범인, 피해자) */
+.crime-scene {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important; /* 이 영역 전체가 클릭을 통과시키도록 설정 */
+    z-index: 1;
+}
+
+/* 위치 잡기 */
+.victim-wrapper {
+    position: absolute;
+    pointer-events: none !important;
+
+    top: 60%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 90vw;          /* 화면 기준 비율 */
+    height: 90vh;         /* 화면 기준 높이 */
+    
+    width: 90vw;      /*가로 전체 */
+    height: 90vh;     /*가로 전체 */
+
+    /* ackground-color: #111;   /* 배경 (포스터 느낌) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+/* 이미지 스타일 (흰색 라인아트처럼 보이게) */
+.victim-img {
+   max-width: 75%;
+   max-height: 75%;
+   object-fit: contain;   /* 비율 유지 */
+
+   pointer-events: none !important;
+}
+
+/* 4. 증거물 이미지 + 하단 Evidence Frame */
+.evidence-frame {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 180px;
+
+    background: #0f0f0f;
+    border-top: 2px solid #333;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 60px 100px 40px 100px;
+    box-sizing: border-box;
+
+    z-index: 9999;  /* 다른 요소 위에 올라오도록 */
+}
+
+/* 스크롤바 */
+.evidence-frame::-webkit-scrollbar {
+    height: 8px;
+}
+.evidence-frame::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+.evidence-frame::-webkit-scrollbar-track {
+    background: #222;
+}
+
+/* 제목 글자 */
+.evidence-label {
+    position: absolute;
+    top: 10px;
+    left: 10%;
+    transform: translateX(-50%);
+
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+/* 이미지 줄 */
+.evidence-track {
+    display: flex;
+    gap: 150px;
+    align-items: center;
+    height: 130%;
+}
+
+/* 증거 이미지 */
+.evidence-img {
+    height: 130px;
+    width: auto;
+
+    border: 4px solid #FFFEF7;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.evidence-img:hover {
+    transform: scale(1.15);
+}
+
+/* =========================================
+   조건 2: 클릭 시 나오는 모달 (Modal) 디자인
+   ========================================= */
+
+/* 배경 (검은색 반투명) */
+.modal {
+    display: none; /* 평소엔 숨김 */
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.85); 
+    backdrop-filter: blur(5px); 
+    pointer-events: auto !important; /* 마우스 이벤트 활성화 */
+    
+    /* 내용을 중앙 정렬하기 위한 Flex 설정 */
+    justify-content: center;
+    align-items: center;
+}
+/* JS에서 display를 block이 아닌 flex로 줘야 중앙정렬이 잘 됨 */
+.modal[style*="display: block"] { display: flex !important; }
+
+
+/* 2. 모달 내부 컨텐츠 박스 (흰색 테두리 영역) */
+.modal-content-box {
+    position: relative; /* 닫기 버튼 위치 기준 */
+    width: 1100px;       /* 전체 박스 너비 */
+    height: 875px;      /* 전체 박스 높이 */
+    bottom: 30px;       /* 바닥 기준 정렬 */
+    background-color: #1B1A1A; /* 박스 내부 배경색 (어두운 회색) */
+    border: 2px solid white;   /* 흰색 테두리 */
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    display: flex; /* 좌우 배치를 위한 Flex 설정 */
+    overflow: hidden; /* 내용이 삐져나가지 않게 */
+}
+
+/* 3. 닫기 버튼 (X) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #FFFEF7;
+    font-size: 23px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+    transition: color 0.3s;
+}
+.close-btn:hover { color: #bbb; }
+
+/* 4. 왼쪽 이미지 영역 */
+.modal-image-area {
+    flex: 6; /* 공간의 60% 차지 */
+    background-color: #1B1A1A; /* 이미지 배경색 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#modalImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 비율 유지하며 영역 안에 맞춤 */
+}
+
+
+/* 5. 오른쪽 텍스트 영역 */
+.modal-text-area {
+    flex: 4; /* 공간의 40% 차지 */
+    padding: 60px 30px 30px; /* 상단 패딩을 닫기 버튼 공간만큼 줌 */
+    color: #FFFEF7;
+    overflow-y: auto; /* 내용이 많으면 스크롤 */
+    font-family: 'Gulim', sans-serif; /* 굴림체 적용 */
+}
+
+#modalTitle {
+    font-size: 23px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+#modalDescription {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ccc; /* 약간 흐린 흰색 */
+    white-space: pre-wrap; /* 줄바꿈과 띄어쓰기 인식 */
+}
+
+/* 스크롤바 디자인 (텍스트 영역) */
+.modal-text-area::-webkit-scrollbar { width: 8px; }
+.modal-text-area::-webkit-scrollbar-thumb { background-color: #555; border-radius: 4px; }
+.modal-text-area::-webkit-scrollbar-track { background-color: #222; }
+
+
+/* =========================================
+   조건 2: 범인 선택 모달
+   ========================================= */
+
+/* 상단 */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 80px;
+}
+
+.nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #FFFEF7;
+    border: 1px solid #FFFEF7;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.nav a:hover {
+    background: #FFFEF7;
+    color: #1B1A1A;
+}
+
+/* 모달 공통 */
+.result-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10001;   
+}
+
+.culprit-modal {
+    z-index: 10000;
+}
+
+/* 모달 박스 */
+.culprit-modal,
+.result-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10002;
+}
+
+.culprit-box {
+    width: 900px;
+    height: 200px;
+    background: #1B1A1A;
+    border: 2px solid #FFFEF7;
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.culprit-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.culprit-list {
+    display: flex;
+    gap: 80px;
+    overflow-x: auto;     /* 🔥 스크롤 */
+    overflow-y: hidden;
+}
+
+.suspect {
+    width: 80px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.result-box {
+    width: 500px;
+    padding: 40px;
+    background: #1B1A1A;
+    border: 2px solid #FFFEF7;
+    border-radius: 12px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+}
